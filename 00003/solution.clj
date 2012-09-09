@@ -21,5 +21,5 @@
         (conj prime-factors prime)
         prime-factors))))
 
-(println (get-prime-factors 600851475143))
+(println (max (get-prime-factors 600851475143)))
 
