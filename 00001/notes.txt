@@ -1,4 +1,0 @@
-I really dislike the duplication between the conditionalised calls to
-`sum-multiples` in my solution. I wonder what the idiomatic LISP approach
-is to eliminating such duplication?
-
