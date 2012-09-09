@@ -4,5 +4,5 @@
       (sum-even-fibonacci second (+ first second) limit new-total))
     total))
 
-(sum-even-fibonacci 0 1 4000000 0)
+(println (sum-even-fibonacci 0 1 4000000 0))
 
