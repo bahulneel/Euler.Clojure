@@ -9,3 +9,6 @@ Each directory contains two files:
   * `problem.txt` describing the problem to be solved;
   * `solution.clj` defining my solution in Clojure.
 
+[euler]: http://projecteuler.net/
+[clojure]: http://clojure.org/
+
