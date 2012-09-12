@@ -1,19 +1,28 @@
-(defn eliminate-multiples [factor product limit candidates]
-  (if (<= product limit)
-    (let [remaining-candidates (if (contains? candidates product) (disj candidates product) candidates)]
-      (recur factor (+ product factor) limit remaining-candidates))
-    candidates))
+(defn update-prime-candidates [current step candidates]
+  (if (candidates current)
+    (recur (+ current step) step candidates)
+    (assoc candidates current step)))
 
-(defn get-primes [start end primes]
-  (if (<= start end)
-    (recur (+ start 1) end (eliminate-multiples start (* start 2) end primes))
-    primes))
+(defn get-next-prime [current candidates]
+  (let [step (candidates current)]
+    (let [next (+ current 2)]
+      (if (candidates current)
+        (recur next 
+          (update-prime-candidates (+ current step) step (dissoc candidates current)))
+        (cons next
+          (lazy-seq
+            (get-next-prime next
+              (assoc candidates (* current current) (* current 2)))))))))
+
+(defn get-primes []
+  (cons 2
+    (lazy-seq
+      (get-next-prime 3 {}))))
 
 (defn get-prime-factors [product]
-  (let [primes (get-primes 2 product (apply hash-set (range 1 product)))]
-    (for [prime primes]
-      (when (= (rem product prime) 0)
-        prime))))
+  (for [prime (get-primes)]
+    (when (= (rem product prime) 0)
+      prime)))
 
 (println (apply max (filter (comp not nil?) (get-prime-factors 600851475143))))
 
