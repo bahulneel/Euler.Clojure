@@ -1,8 +1,8 @@
 # Euler.Clojure
 
 [Project Euler][euler] is a growing set of mathematical problems that are often
-used as a playground in which to learn new programming languages. Currently,
-I'm leaning [Clojure], and this project contains my Clojure-based solutions to
+used as a playground in which to learn new programming languages. Currently
+I'm learning [Clojure] and this project contains my Clojure-based solutions to
 the problems of Project Euler.
 
 The solutions are nested in a directory structure according to the problem number.
