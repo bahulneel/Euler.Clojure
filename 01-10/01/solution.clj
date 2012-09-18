@@ -1,8 +1,7 @@
-(defn sum-multiples [multiples candidate limit total]
-  (if (< candidate limit)
-    (let [new-total (if (some #(= (rem candidate %) 0) multiples) (+ candidate total) total)]
-      (recur multiples (+ candidate 1) limit new-total))
-    total))
 
-(println (sum-multiples [3 5] 1 1000 0))
-
+(println
+ (reduce
+  +
+  (filter
+   #(or (= 0 (mod % 3)) (= 0 (mod % 5)))
+   (seq (range 1 1000)))))
